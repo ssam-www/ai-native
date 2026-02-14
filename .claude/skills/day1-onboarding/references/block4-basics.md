@@ -16,8 +16,10 @@ CLI, git, GitHub, 에디터 기초를 퀴즈와 함께 배운다.
 | cd 폴더명 | 폴더 이동 | 파인더에서 폴더 더블클릭 |
 | ls | 목록 보기 | 폴더 열어서 뭐 있나 보기 |
 | pwd | 현재 위치 | 주소창 보기 |
+| cat 파일명 | 파일 내용 보기 | 메모장으로 파일 열어보기 |
+| open 파일명 | 파일/폴더 열기 | 파인더에서 더블클릭 (Mac 전용) |
 
-이 3개면 충분하다. Claude Code가 나머지는 다 해준다.
+이 5개면 충분하다. Claude Code가 나머지는 다 해준다.
 
 ### git 기초
 
@@ -32,12 +34,21 @@ CLI, git, GitHub, 에디터 기초를 퀴즈와 함께 배운다.
 
 git은 실행 취소의 끝판왕이다. 뭘 해도 돌아갈 수 있다.
 
+> 더 알고 싶다면:
+> - [git 간편 안내서](https://rogerdudler.github.io/git-guide/index.ko.html) — 한국어, 한 페이지로 끝
+> - [Learn Git Branching](https://learngitbranching.js.org/?locale=ko) — 브라우저에서 직접 해보는 시각적 git 튜토리얼
+> - [코딩애플 - Git & GitHub](https://codingapple.com/course/git-and-github/) — 무료 한국어 영상 강의
+
 ### GitHub 기초
 
 | 개념 | 비유 |
 |------|------|
 | Pull Request (PR) | "이렇게 바꿨는데 괜찮아?" 리뷰 요청 |
 | Merge | "오케이, 합치자" 리뷰 통과 후 반영 |
+
+> 더 알고 싶다면:
+> - [GitHub 공식 시작 가이드](https://docs.github.com/ko/get-started/start-your-journey/hello-world) — 한국어, GitHub이 직접 만든 튜토리얼
+> - [초보자를 위한 git과 GitHub 시작기 (모두의연구소)](https://modulabs.co.kr/blog/git-and-github-for-beginners) — 비개발자 눈높이 한국어 블로그
 
 ### 에디터 비교
 
@@ -60,6 +71,14 @@ Claude Code에게 명령어를 대신 시켜보는 체험이다. 아래 3가지�
 ```
 
 > Claude가 `pwd`를 실행해서 경로를 보여줄 것이다. 직접 pwd를 칠 필요가 없다!
+
+**1-2. CLI 직접 체험** — Claude Code 안에서 `!`를 붙이면 터미널 명령어를 직접 실행할 수 있다:
+
+```
+!cat .claude/skills/day1-onboarding/references/block4-basics.md
+```
+
+> 지금 배우고 있는 바로 이 교안의 내용이 화면에 출력된다! `!`는 "Claude한테 시키지 말고 내가 직접 실행할게"라는 뜻이다.
 
 **2. git 체험** — Claude에게 git 상태를 물어본다:
 

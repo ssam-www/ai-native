@@ -3,6 +3,7 @@
 > **Phase A 시작 시 반드시 아래 형태로 출력한다:**
 > ```
 > 📖 공식 문서: https://code.claude.com/docs/ko/skills
+> 📖 참고: https://agentskills.io/what-are-skills
 > ```
 
 ## EXPLAIN
@@ -21,6 +22,19 @@ Skill C   ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  필요할 때만 로�
                        ▼         ▼         ▼
                   "/sync" 호출  자동 매칭  "/wrap" 호출
 ```
+
+### Skill 폴더 구조
+
+```
+my-skill/
+├── SKILL.md          # 필수: 스킬의 본체. 메타데이터 + 지시사항
+├── scripts/          # 선택: 실행할 코드 (Python, Bash 등)
+├── references/       # 선택: 참고 문서, 교안, 데이터
+└── assets/           # 선택: 템플릿, 리소스 파일
+```
+
+- `SKILL.md`만 있으면 스킬이 된다. 나머지는 필요할 때 추가한다
+- 지금 이 온보딩도 `SKILL.md` + `references/` 구조로 만들어져 있다
 
 ## EXECUTE
 

@@ -30,11 +30,45 @@
 
 ## EXECUTE
 
-Claude에게 물어보라고 안내한다:
+3단계로 직접 플러그인을 설치해본다.
+
+### 1단계: 공식 플러그인 설치
+
+Claude Code에는 공식 마켓플레이스가 있다. `/plugin` 명령어로 둘러보고 하나를 설치해보자:
 
 ```
-Plugin은 Skill이랑 뭐가 달라? Plugin이 왜 필요한지 설명해줘
+/plugin
 ```
+
+> 목록에서 마음에 드는 공식 플러그인을 골라 설치해본다.
+
+### 2단계: superpowers 플러그인 설치
+
+개발 워크플로우를 강화하는 인기 플러그인이다. 마켓플레이스를 먼저 등록하고, 거기서 설치한다:
+
+```
+/plugin marketplace add obra/superpowers-marketplace
+```
+
+마켓플레이스가 등록되면 플러그인을 설치한다:
+
+```
+/plugin install superpowers@superpowers-marketplace
+```
+
+### 3단계: clarify 플러그인 설치
+
+AI Native Camp 운영팀이 만든 플러그인이다. 우리만의 마켓플레이스에서 가져온다:
+
+```
+/plugin marketplace add team-attention/plugins-for-claude-natives
+```
+
+```
+/plugin install clarify
+```
+
+> clarify는 모호한 요청을 명확하게 만들어주는 플러그인이다. Day 3에서 깊이 다룬다.
 
 ## QUIZ
 

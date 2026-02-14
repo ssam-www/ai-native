@@ -77,6 +77,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 - **Block 1 (Experience)**: Phase A에서 3가지 데모 안내 → Stop. Phase B에서 체험 소감 확인.
 - **Block 2 (Why)**: Phase A에서 Quiz 1 출제 → 피드백 → Stop. Phase B에서 Quiz 2 + 영상 안내.
 - **Block 3 (What)**: 7개 기능 각각이 독립 블록. 3-1부터 3-7까지 각각 Phase A → Phase B.
+- **Block 3-Break (쉬어가기)**: Phase A만 있고 Phase B 없음. 퀴즈 없음. 터미널 소개 + Status Line 설정 체험.
 - **Block 4 (Basics)**: Phase A에서 설명+실행 안내 → Stop. Phase B에서 퀴즈 3개 연속.
 
 ---
@@ -88,7 +89,9 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 | Block 0 | `references/block0-setup.md` |
 | Block 1 | `references/block1-experience.md` |
 | Block 2 | `references/block2-why.md` |
-| Block 3-1 ~ 3-7 | `references/block3-1-claude-md.md` ~ `references/block3-7-plugin.md` |
+| Block 3-1 ~ 3-4 | `references/block3-1-claude-md.md` ~ `references/block3-4-subagent.md` |
+| Block 3-Break | `references/block3-break.md` (쉬어가기: 터미널 & Status Line) |
+| Block 3-5 ~ 3-7 | `references/block3-5-agent-teams.md` ~ `references/block3-7-plugin.md` |
 | Block 3 마무리 | `references/block3-summary.md` |
 | Block 4 | `references/block4-basics.md` |
 
@@ -102,6 +105,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 - 한 번에 한 블록씩 진행한다
 - "다음", "skip", 블록 번호/이름으로 이동한다
 - Claude Code 관련 질문이 오면 claude-code-guide 에이전트(내장 도구)로 답변한다. 답변 후 사용자가 직접 따라할 수 있게 단계별로 안내하고, 질문할 때는 AskUserQuestion을 사용한다. 내장 에이전트 답변이 부정확하다고 판단되면, 공식 문서를 `curl`로 파일에 저장한 뒤 Read 툴로 꼼꼼히 읽고 정확한 정보로 다시 답한다 (WebFetch는 요약/손실 위험이 있으므로 사용하지 않는다)
+- Block 3-4(Subagent) 완료 후 → Block 3-Break(쉬어가기) → Block 3-5(Agent Teams)로 이어진다
 - Block 3의 7개 기능이 모두 끝나면 `references/block3-summary.md`를 읽고 관계도를 보여준다
 
 ---

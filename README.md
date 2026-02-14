@@ -2,7 +2,7 @@
 
 > 7일 후, 당신의 업무 방식은 영구적으로 바뀐다.
 
-비개발자를 위한 Claude Code 7일 집중 캠프. 2026-02-15 ~ 2026-02-22, Naver D2SF.
+비개발자를 위한 Claude Code 7일 집중 캠프. 2026-02-14 ~ 2026-02-21 (일요일 휴식), Naver D2SF.
 
 ## Skills as Curriculum
 

@@ -1,10 +1,10 @@
-# Block 5: Output Format 선택
+# Block 4: Output Format 선택
 
 ## EXPLAIN
 
 ### 수집한 정보, 어디에 내보낼 것인가?
 
-Block 3~4에서 여러 소스의 정보를 성공적으로 수집했다. 이제 마지막 질문이 남았다:
+Block 3에서 여러 소스의 정보를 성공적으로 수집하고 검증했다. 이제 마지막 질문이 남았다:
 
 > "이 정보를 **어디에**, **어떤 형태로** 저장하고 공유할 것인가?"
 
@@ -102,7 +102,7 @@ AskUserQuestion({
 AskUserQuestion({
   "questions": [{
     "question": "3가지 출력 형식 중 가장 간단하고, 외부 서비스 연결 없이 바로 쓸 수 있는 것은?",
-    "header": "Quiz 5-1",
+    "header": "Quiz 4-1",
     "options": [
       {"label": "Markdown 파일", "description": "프로젝트 폴더에 .md 파일로 저장"},
       {"label": "Slack 메시지", "description": "Slack 채널에 전송"},
@@ -120,7 +120,7 @@ AskUserQuestion({
 AskUserQuestion({
   "questions": [{
     "question": "Slack으로 결과를 보내려면 뭐가 필요할까요?",
-    "header": "Quiz 5-2",
+    "header": "Quiz 4-2",
     "options": [
       {"label": "Slack MCP 연결", "description": "Block 2에서 배운 MCP 연결"},
       {"label": "Slack 앱 설치", "description": "스마트폰에 Slack 앱 설치"},

@@ -81,7 +81,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 | Block 1 | `references/block1-add-server.md` | MCP 서버 추가하기 |
 | Block 2 | `references/block2-mcp-command.md` | /mcp 명령어로 도구 탐색 |
 | Block 3 | `references/block3-popular-servers.md` | 인기 MCP 서버 탐색 및 설치 |
-| Block 4 | `references/block4-plugin-mcp.md` | /plugin으로 MCP 확장 |
+| Block 4 [BONUS] | `references/block4-plugin-mcp.md` | /plugin으로 MCP 확장 |
 
 > 파일 경로는 이 SKILL.md 기준 상대경로다.
 > 각 reference 파일은 `## EXPLAIN`, `## EXECUTE`, `## QUIZ` 섹션으로 구성된다.
@@ -92,8 +92,9 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 
 - 한 번에 한 블록씩 진행한다
 - "다음", "skip", 블록 번호/이름으로 이동한다
+- BONUS 블록은 시간이 남을 때만 진행한다
 - Claude Code 관련 질문이 오면 claude-code-guide 에이전트(내장 도구)로 답변한다. 답변 후 사용자가 직접 따라할 수 있게 단계별로 안내하고, 질문할 때는 AskUserQuestion을 사용한다
-- Block 4 완료 후 전체 마무리 안내
+- Block 3 완료 후 전체 마무리 안내 (BONUS Block 4는 시간 여유 시 진행)
 
 ---
 
@@ -107,7 +108,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 | 1 | 서버 추가 | `claude mcp add`로 실제 서버 연결 |
 | 2 | /mcp 탐색 | 연결된 서버와 도구 목록 확인 |
 | 3 | 인기 서버 | 공식 목록에서 유용한 서버 설치 |
-| 4 | Plugin + MCP | /plugin으로 MCP 포함 플러그인 설치 |
+| 4 [BONUS] | Plugin + MCP | /plugin으로 MCP 포함 플러그인 설치 |
 
 ```json
 AskUserQuestion({

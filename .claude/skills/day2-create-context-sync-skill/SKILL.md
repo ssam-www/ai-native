@@ -39,7 +39,7 @@ description: AI Native Camp Day 2 Context Sync 스킬 만들기. 여러 외부 �
 │ 5. ⛔ 여기서 반드시 STOP. 턴을 종료한다.                    │
 │                                                          │
 │ ❌ 절대 하지 않는 것: 퀴즈 출제, QUIZ 섹션 읽기             │
-│ ❌ 절대 하지 않는 것: AskUserQuestion 호출 (Block 0,2,5 제외)│
+│ ❌ 절대 하지 않는 것: AskUserQuestion 호출 (Block 0,2,4 제외)│
 │ ❌ 절대 하지 않는 것: "실행해봤나요?" 질문                   │
 └──────────────────────────────────────────────────────────┘
 
@@ -56,7 +56,7 @@ description: AI Native Camp Day 2 Context Sync 스킬 만들기. 여러 외부 �
 
 ### 핵심 금지 사항 (절대 위반 금지)
 
-1. **Phase A에서 AskUserQuestion을 호출하지 않는다 (Block 0, 2, 5 제외)** — 이 3개 블록은 사용자 선택이 필수이므로 예외
+1. **Phase A에서 AskUserQuestion을 호출하지 않는다 (Block 0, 2, 4 제외)** — 이 3개 블록은 사용자 선택이 필수이므로 예외
 2. **Phase A에서 퀴즈를 내지 않는다** — QUIZ 섹션은 Phase B에서만 읽는다
 3. **Phase A에서 "실행해봤나요?"를 묻지 않는다** — 사용자가 먼저 말할 때까지 기다린다
 4. **한 턴에 EXPLAIN + QUIZ를 동시에 하지 않는다** — 반드시 2턴으로 나눈다
@@ -91,7 +91,7 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 아래 방식으로 진행한다:
 
 1. Block 0에서 사용자가 도구를 선택하면, `templates/context-sync.md` 기반으로 스킬 파일을 즉시 생성한다
-2. 이후 Block 1~6에서 생성된 스킬의 해당 부분만 수정/확장한다
+2. 이후 Block 1~5에서 생성된 스킬의 해당 부분만 수정/확장한다
 3. 최종적으로 완성된 스킬을 실행하여 결과를 확인한다
 
 > 템플릿에는 Slack, Notion, Gmail, Google Calendar 4가지 도구의 예시가 포함되어 있다.
@@ -106,10 +106,9 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 | 0 | 스킬 골격 생성 | 전체 (선택한 도구만 남기기) |
 | 1 | 프로젝트 맥락 반영 | frontmatter description, 수집 범위 |
 | 2 | 연결 방법 확정 | 각 소스의 "수집 방법" |
-| 3 | 병렬 수집 실행 | "실행 흐름" 섹션 |
-| 4 | 수집 결과 반영 | "추출할 정보" 조정 |
-| 5 | 출력 형식 설정 | "출력 포맷" 섹션 |
-| 6 | 최종 정리 + 실행 | 전체 마무리 |
+| 3 | 수집 실행 & 검증 | "실행 흐름" 섹션 + "추출할 정보" 조정 |
+| 4 | 출력 형식 설정 | "출력 포맷" 섹션 |
+| 5 | 최종 정리 + 실행 | 전체 마무리 |
 
 ---
 
@@ -118,10 +117,9 @@ Phase A의 마지막에는 반드시 아래 형태의 문구를 출력하고 Sto
 - **Block 0 (도구 선택 + 스킬 생성)**: Phase A에서 설명 + AskUserQuestion으로 도구 선택. 선택 결과로 템플릿 기반 스킬 생성 → Stop. Phase B에서 생성된 스킬 확인 퀴즈.
 - **Block 1 (프로젝트 탐색)**: Phase A에서 Explore 에이전트로 프로젝트 구조를 파악하고 결과 공유 → Stop. Phase B에서 퀴즈.
 - **Block 2 (도구 연결)**: Phase A에서 MCP vs API 선택 안내 + AskUserQuestion → **Claude가 설정을 대신 수행**하고 사용자는 결과를 확인 → Stop. Phase B에서 퀴즈.
-- **Block 3 (Context 수집)**: Phase A에서 subagent 병렬 수집 설명 + 실행 → 수집 결과를 성공/실패로 구분하여 보여주기 → Stop. Phase B에서 퀴즈.
-- **Block 4 (결과 검증)**: Phase A에서 실패한 소스 재시도 + 수집 데이터 품질 확인 → Stop. Phase B에서 퀴즈.
-- **Block 5 (Output 설정)**: Phase A에서 Output format 선택 안내 + AskUserQuestion → 선택에 따라 스킬 수정 → Stop. Phase B에서 퀴즈.
-- **Block 6 (완성 + 실행)**: Phase A에서 최종 스킬 구성 정리 + 실제 실행 → Stop. Phase B에서 종합 퀴즈 + 마무리.
+- **Block 3 (수집 실행 & 검증)**: Phase A에서 subagent 병렬 수집 설명 + 실행 → 수집 결과를 성공/실패로 구분하여 보여주기 → 실패한 소스 재시도 + 수집 데이터 품질 확인 → Stop. Phase B에서 퀴즈.
+- **Block 4 (Output 설정)**: Phase A에서 Output format 선택 안내 + AskUserQuestion → 선택에 따라 스킬 수정 → Stop. Phase B에서 퀴즈.
+- **Block 5 (완성 + 실행)**: Phase A에서 최종 스킬 구성 정리 + 실제 실행 → Stop. Phase B에서 종합 퀴즈 + 마무리.
 
 ### Block 0 예외 규칙
 
@@ -150,9 +148,9 @@ API 선택 시:
 1. Claude가 직접 API 호출 코드를 작성한다
 2. 사용자의 스킬 `scripts/` 폴더에 저장한다
 
-### Block 5 예외 규칙
+### Block 4 예외 규칙
 
-Block 5의 Phase A도 **AskUserQuestion을 사용**한다. Output format을 선택해야 한다.
+Block 4의 Phase A도 **AskUserQuestion을 사용**한다. Output format을 선택해야 한다.
 
 ---
 
@@ -163,10 +161,9 @@ Block 5의 Phase A도 **AskUserQuestion을 사용**한다. Output format을 선�
 | Block 0 | `references/block0-tool-selection.md` | 도구 선택 + 템플릿 기반 스킬 생성 |
 | Block 1 | `references/block1-project-explore.md` | Explore 에이전트로 프로젝트 구조 파악 |
 | Block 2 | `references/block2-tool-connection.md` | MCP vs API 연결 방식 선택 + 실행 |
-| Block 3 | `references/block3-parallel-collection.md` | subagent 병렬 수집 + 결과 확인 |
-| Block 4 | `references/block4-result-validation.md` | 수집 실패 재시도 + 데이터 품질 검증 |
-| Block 5 | `references/block5-output-format.md` | Output format 선택 (markdown, Slack, Notion) |
-| Block 6 | `references/block6-finalize.md` | 최종 스킬 완성 + 실행 + 마무리 |
+| Block 3 | `references/block3-parallel-collection.md` | subagent 병렬 수집 + 결과 검증 |
+| Block 4 | `references/block4-output-format.md` | Output format 선택 (markdown, Slack, Notion) |
+| Block 5 | `references/block5-finalize.md` | 최종 스킬 완성 + 실행 + 마무리 |
 
 > 파일 경로는 이 SKILL.md 기준 상대경로다.
 > 각 reference 파일은 `## EXPLAIN`, `## EXECUTE`, `## QUIZ` 섹션으로 구성된다.
@@ -204,10 +201,9 @@ Block 5의 Phase A도 **AskUserQuestion을 사용**한다. Output format을 선�
 | 0 | 도구 선택 | sync할 도구 고르기 + 스킬 골격 생성 |
 | 1 | 프로젝트 탐색 | Explore로 프로젝트 구조 파악 |
 | 2 | 도구 연결 | MCP or API로 도구 연결 |
-| 3 | Context 수집 | subagent 병렬 수집 + 결과 확인 |
-| 4 | 결과 검증 | 실패 재시도 + 데이터 품질 |
-| 5 | Output 설정 | 출력 형식 선택 + 스킬 수정 |
-| 6 | 완성 + 실행 | 최종 스킬 실행 + 마무리 |
+| 3 | 수집 실행 & 검증 | subagent 병렬 수집 + 결과 검증 |
+| 4 | Output 설정 | 출력 형식 선택 + 스킬 수정 |
+| 5 | 완성 + 실행 | 최종 스킬 실행 + 마무리 |
 
 ```json
 AskUserQuestion({
@@ -217,8 +213,8 @@ AskUserQuestion({
     "options": [
       {"label": "처음부터 (Block 0)", "description": "sync할 도구 고르기 + 스킬 골격 생성"},
       {"label": "도구 연결 (Block 2)", "description": "도구 선택은 했고, MCP/API 연결부터"},
-      {"label": "Context 수집 (Block 3)", "description": "연결 완료, 수집부터"},
-      {"label": "Output 설정 (Block 5)", "description": "수집 완료, 출력 형식부터"}
+      {"label": "수집 실행 & 검증 (Block 3)", "description": "연결 완료, 수집부터"},
+      {"label": "Output 설정 (Block 4)", "description": "수집 완료, 출력 형식부터"}
     ],
     "multiSelect": false
   }]

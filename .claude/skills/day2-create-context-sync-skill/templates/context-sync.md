@@ -45,8 +45,12 @@ channels:
 각 채널에 대해 mcp__claude_ai_Slack__slack_read_channel 호출.
 채널명과 메시지 개수(limit)를 전달한다.
 
-예시:
+Connectors로 연결한 경우:
   mcp__claude_ai_Slack__slack_read_channel(channel="general", limit=50)
+
+claude mcp add로 연결한 경우:
+  mcp__slack__slack_read_channel(channel="general", limit=50)
+  (도구명은 연결 방식에 따라 다를 수 있음. /mcp로 확인)
 ```
 
 추출할 정보:
@@ -119,14 +123,9 @@ databases:
 ```
 Notion MCP 서버의 도구를 사용하여 데이터베이스를 조회한다.
 
-.mcp.json 설정 예시:
-{
-  "notion": {
-    "command": "npx",
-    "args": ["-y", "@notionhq/notion-mcp-server"],
-    "env": { "NOTION_API_KEY": "${NOTION_API_KEY}" }
-  }
-}
+연결 방법 (택 1):
+  - Connectors: claude.ai/settings/connectors 에서 Notion 연결 (가장 쉬움)
+  - 명령어: claude mcp add --transport http notion https://mcp.notion.com/mcp
 
 호출 예시:
   mcp__notion__query_database(database_id="your-database-id")

@@ -1,4 +1,4 @@
-# Block 6: 최종 완성 + 실행
+# Block 5: 최종 완성 + 실행
 
 ## EXPLAIN
 
@@ -16,13 +16,10 @@ Block 1: 프로젝트 구조 파악 + 스킬 맥락 반영
 Block 2: 도구 연결 (MCP/API)
   → 외부 서비스와 Claude를 연결하는 통로를 만들었다
 
-Block 3: 병렬 수집 테스트
-  → subagent로 여러 소스에서 동시에 정보를 수집했다
+Block 3: 수집 실행 & 검증
+  → subagent로 여러 소스에서 동시에 정보를 수집하고 품질을 검증했다
 
-Block 4: 결과 검증 + 품질 조정
-  → 수집 결과를 확인하고, 빠진 것이나 오류를 수정했다
-
-Block 5: 출력 형식 설정
+Block 4: 출력 형식 설정
   → Markdown, Slack, Notion 중 출력 방식을 선택했다
 ```
 
@@ -58,7 +55,7 @@ triggers:
 
 - 소스 정의가 올바른지 (연결한 도구와 일치하는지)
 - 실행 흐름이 맞는지 (병렬 수집 → 통합 → 저장 순서)
-- 출력 포맷이 Block 5에서 선택한 대로 설정되어 있는지
+- 출력 포맷이 Block 4에서 선택한 대로 설정되어 있는지
 - 트리거 문구가 적절한지
 
 문제가 있으면 함께 수정한다.
@@ -109,15 +106,15 @@ Day 1에서 Claude Code를 처음 만졌는데, 벌써 나만의 자동화 스�
 
 ## QUIZ
 
-> Block 6은 종합 퀴즈를 출제한다. 사용자가 돌아오면 먼저 "Day 2의 모든 과정을 완료했습니다! 마지막으로 오늘 배운 것을 정리하는 퀴즈입니다." 라고 안내한 뒤 아래 퀴즈를 순서대로 출제한다.
+> Block 5은 종합 퀴즈를 출제한다. 사용자가 돌아오면 먼저 "Day 2의 모든 과정을 완료했습니다! 마지막으로 오늘 배운 것을 정리하는 퀴즈입니다." 라고 안내한 뒤 아래 퀴즈를 순서대로 출제한다.
 
-### Quiz 6-1: 자동 실행
+### Quiz 5-1: 자동 실행
 
 ```json
 AskUserQuestion({
   "questions": [{
     "question": "완성된 스킬을 매일 자동으로 실행하려면 어떻게 해야 할까요?",
-    "header": "Quiz 6-1",
+    "header": "Quiz 5-1",
     "options": [
       {"label": "CLAUDE.md에 스케줄 추가", "description": "스케줄을 설정하면 정해진 시간에 자동 실행"},
       {"label": "매일 아침 직접 실행", "description": "수동으로 매번 입력"},
@@ -131,13 +128,13 @@ AskUserQuestion({
 정답: CLAUDE.md에 스케줄 추가
 피드백: "정확합니다! CLAUDE.md에 스케줄을 적어두면 Claude가 정해진 시간에 자동으로 스킬을 실행합니다. 매일 아침 모닝 브리핑이 자동으로 만들어지는 거죠."
 
-### Quiz 6-2: Day 2 종합
+### Quiz 5-2: Day 2 종합
 
 ```json
 AskUserQuestion({
   "questions": [{
     "question": "Day 2에서 배운 핵심 3가지를 고르세요.",
-    "header": "Quiz 6-2",
+    "header": "Quiz 5-2",
     "options": [
       {"label": "MCP 연결", "description": "Claude와 외부 서비스를 연결하는 통로"},
       {"label": "subagent 병렬 수집", "description": "여러 소스에서 동시에 정보 수집"},

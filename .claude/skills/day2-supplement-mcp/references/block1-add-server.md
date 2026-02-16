@@ -23,6 +23,20 @@ MCP 서버는 **어디서 실행되느냐**에 따라 추가 방법이 다르다
 claude mcp add --transport [방법] [이름] [주소]
 ```
 
+이 명령어가 길어 보이지만, 한 단어씩 뜯어보면 간단하다:
+
+| 입력 | 의미 | 비유 |
+|------|------|------|
+| `claude` | Claude Code 실행 | "클로드야," |
+| `mcp` | MCP 기능 사용 | "MCP 관련해서," |
+| `add` | 서버를 추가해줘 | "하나 추가해줘" |
+| `--transport` | 연결 방식을 지정할게 | "연결 방법은..." |
+| `http` | HTTP 방식으로 | "웹으로 연결" |
+| `notion` | 이 서버의 이름(별명) | "이름은 notion이야" |
+| `https://mcp.notion.com/mcp` | 서버의 실제 주소 | "주소는 여기야" |
+
+> 즉, **"클로드야, MCP 서버 하나 추가해줘. HTTP 방식으로, 이름은 notion이고, 주소는 이거야"** 라는 말이다.
+
 #### 방법 1: HTTP (가장 추천)
 
 ```bash
@@ -52,16 +66,38 @@ claude mcp add --transport stdio filesystem -- npx -y @modelcontextprotocol/serv
 
 ### 저장 범위 (scope)
 
-| scope | 저장 위치 | 누가 쓰나 |
+| scope | 어디에 저장되나 | 누가 쓰나 |
 |-------|-----------|-----------|
 | `local` (기본) | 이 프로젝트에서만 | 나만 |
-| `project` | `.mcp.json` 파일 | 팀 전체 (git으로 공유) |
-| `user` | `~/.claude.json` | 모든 프로젝트에서 나만 |
+| `project` | 프로젝트 폴더 (팀 공유) | 팀 전체 (git으로 공유) |
+| `user` | 내 컴퓨터 전체 | 모든 프로젝트에서 나만 |
 
 ```bash
 # 모든 프로젝트에서 쓸 서버 추가
 claude mcp add --transport http --scope user notion https://mcp.notion.com/mcp
 ```
+
+> `.mcp.json` 파일이 뭔지 궁금할 수 있다. **`claude mcp add` 명령어를 실행하면 Claude가 알아서 만들어주는 설정 파일**이다. 직접 열어서 편집할 일은 거의 없다.
+
+<details>
+<summary>🔍 (참고) .mcp.json 파일의 구조가 궁금하다면</summary>
+
+`project` scope로 서버를 추가하면 프로젝트 폴더에 `.mcp.json` 파일이 생긴다. 내용은 이런 형태다:
+
+```json
+{
+  "mcpServers": {
+    "notion": {
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp"
+    }
+  }
+}
+```
+
+이 파일을 git에 커밋하면 팀원도 같은 MCP 서버를 쓸 수 있다. 하지만 **직접 편집할 필요는 없다.** `claude mcp add/remove` 명령어가 이 파일을 자동으로 관리해준다.
+
+</details>
 
 ## EXECUTE
 
